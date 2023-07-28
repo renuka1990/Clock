@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Clock</title>
+  <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+  <div class="main">
+    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=958&q=80"
+  >
+  <h1>Real-Time Clock</h1>
+  <div id="clock">Loading...</div>
+  <button id="displayBtn">Display Time</button>
+  <div id="timeDisplay"></div>
+
+  <script>
+    // Function to update the clock time
+    function updateClock() {
+      const currentTime = new Date();
+      const hours = currentTime.getHours().toString().padStart(2, '0');
+      const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+      const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    // Function to display the current time when the button is clicked
+    function displayTime() {
+      const currentTime = new Date();
+      const hours = currentTime.getHours().toString().padStart(2, '0');
+      const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+      const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+      const timeString = `Current Time: ${hours}:${minutes}:${seconds}`;
+
+      document.getElementById('timeDisplay').textContent = timeString;
+    }
+
+    // Update the clock every second
+    setInterval(updateClock, 1000);
+
+    // Attach click event to the button
+    document.getElementById('displayBtn').addEventListener('click', displayTime);
+  </script>
+  </div>
+</body>
+</html>
